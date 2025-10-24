@@ -10,25 +10,28 @@
 <body>
 
 <!-- HEADER -->
-
 <header class="header">
-  <img src="./assets/logo-rocio.png" alt="logo" class="logo">
+  <a href="#inicio">
+    <img src="./assets/logo-rocio.png" alt="logo" class="logo">
+  </a>
 
-  <!-- Checkbox -->
-  <input type="checkbox" id="menu-toggle" class="menu-toggle">
-  <label for="menu-toggle" class="hamburger">&#9776;</label>
+  <!-- Ícono del menú -->
+  <a href="#menu" class="hamburger">☰</a>
 
-  <nav class="nav">
-      <a href="#quien-soy">Quien Soy</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#contacto">Contacto</a>
+  <!-- Menú lateral -->
+  <nav id="menu" class="nav">
+    <a href="#" class="close-btn">✕</a>
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
   </nav>
 </header>
 
 
+
  <!-- INTRO -->
 
-<section class="intro">
+<section id="inicio" class="intro">
 <div class="intro-texto">
 <h1>Bienvenidos a mi sitio</h1>
 </div>

@@ -24,77 +24,118 @@ body {
   color: var(--negro);
 }
 
-/* HEADER */
-/* --- BASE --- */
+/* ====================== */
+/* ======= HEADER ======= */
+/* ====================== */
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 10px 20px;
+  background-color: var(--blanco);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
+
 .logo {
   max-width: 150px;
   height: auto;
-}
-.nav a {
-  text-decoration: none;
-  color: black;
-  margin-left: 20px;
-  font-weight: 500;
-}
-
-/* --- RESPONSIVE --- */
-.menu-toggle {
-  display: none;
 }
 
 .hamburger {
   display: none;
   font-size: 30px;
+  text-decoration: none;
+  color: black;
   cursor: pointer;
+}
+
+/* Links del menú */
+.nav a {
+  text-decoration: none;
+  color: black ;
+  margin-left: 20px;
+  font-weight: 500;
+}
+
+/* --- Desktop --- */
+@media (min-width: 769px) {
+  .nav {
+    display: flex;
+    align-items: center;
+    position: static;
+    height: auto;
+    width: auto;
+    background: none;
+  }
+
+  .close-btn {
+    display: none;
+  }
 }
 
 /* --- Mobile --- */
 @media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    z-index: 1001;
+  }
+
   .nav {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 60%;
+    width: 70%;
     height: 100vh;
     background-color: white;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     padding-top: 80px;
+    padding-left: 20px;
+    gap: 20px;
     transition: right 0.3s ease-in-out;
-  }
-@media (max-width: 768px) {
-  .logo {
-    max-width: 100px; 
-  }
-}
-  .nav a {
-    padding: 15px 20px;
-    margin: 0;
+    z-index: 1000;
   }
 
-  .hamburger {
-    display: block;
-  }
-
-  .menu-toggle:checked ~ .nav {
+  /* cuando el nav está “targeteado” */
+  .nav:target {
     right: 0;
   }
+
+  .close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+  }
+
+  .nav a {
+    color: black;
+    font-size: 1.2rem;
+  }
+
+  .logo {
+    max-width: 100px;
+  }
 }
 
 
-/* INTRO */
+/* Intro */
 .intro {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 4rem 2rem;
+  gap: 60px; /* separa el texto y la foto */
+  padding: 2rem 1rem; /* menos padding */
   background: var(--blanco);
+  min-height: 80vh; /* centra mejor verticalmente */
 }
 
 .intro-texto h1 {
@@ -103,84 +144,42 @@ body {
 }
 
 .intro-foto {
-  max-width: 350px;
-  border-radius: 50%;
+  max-width: 300px;
+  border-radius: 70%;
 }
 
 /* Intro - Mobile */
 @media (max-width: 600px) {
   .intro {
-    flex-direction: column; 
+    flex-direction: column;
     align-items: center;
     text-align: center;
     gap: 20px;
+    padding: 6rem ; /* un poco menos en mobile */
+    min-height: auto; /* no hace falta centrar tanto */
   }
 
   .intro-foto {
-    max-width: 200px; 
+    max-width: 200px;
     width: 100%;
     height: auto;
   }
 }
 
-/* Presentación - Mobile */
-@media (max-width: 600px) {
-  .presentacion-contenido {
-    flex-direction: column; 
-    align-items: center;
-    gap: 20px;
-  }
 
-  .check {
-    width: 120px;
-    height: 120px;
-  }
+/* ============================= */
+/* ======= PRESENTACIÓN ======== */
+/* ============================= */
 
-  .texto-columna h1 {
-    font-size: 2rem;
-    text-align: center;
-  }
-
-  .texto-columna p {
-    text-align: center;
-  }
-}
-
-/* Nav - Mobile */
-@media (max-width: 600px) {
-  .nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
-
-  .nav a {
-    margin-left: 0;
-  }
-}
-
-
-/* PRESENTACIÓN */
 
 .presentacion {
   background: var(--negro);
   color: var(--blanco);
-  padding: 3rem 2rem;
+  padding: 5rem 3rem;
   display: flex;
   justify-content: center;
 }
 
-.presentacion-contenido {
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
-  max-width: 800px;
-}
-
-.check {
-  width: 60px;
-}
 .presentacion-contenido {
   display: flex;
   align-items: flex-start;
@@ -199,7 +198,7 @@ body {
 
 .texto-columna h1 {
   margin: 0 0 1rem 0;
-  font-size: 1.8rem; 
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
@@ -209,13 +208,12 @@ body {
   font-size: 1rem;
 }
 
-
-/* RESPONSIVE*/
+/* Presentación - Mobile */
 @media (max-width: 600px) {
   .presentacion-contenido {
     flex-direction: column;
-    align-items: center; 
-    gap: 15px;
+    align-items: center;
+    gap: 20px;
   }
 
   .check {
@@ -233,8 +231,9 @@ body {
   }
 }
 
-
-/* SERVICIOS */
+/* ============================= */
+/* ======= SERVICIOS =========== */
+/* ============================= */
 .servicios {
   background: var(--blanco);
   padding: 4rem 2rem;
@@ -264,7 +263,9 @@ body {
   margin-bottom: 1rem;
 }
 
-/* CONTACTO */
+/* ============================= */
+/* ======= CONTACTO ============ */
+/* ============================= */
 .contacto {
   background: var(--negro);
   color: var(--blanco);
@@ -302,11 +303,12 @@ button:hover {
   background: #e6c100;
 }
 
-/* FOOTER */
-
+/* ============================= */
+/* ========= FOOTER ============ */
+/* ============================= */
 .footer {
-  background-color: #f5f5f5; 
-  background-image: url('./assets/puntitos.png'); 
+  background-color: #f5f5f5;
+  background-image: url('./assets/puntitos.png');
   background-repeat: repeat;
   display: flex;
   justify-content: space-between;
@@ -314,19 +316,19 @@ button:hover {
   padding: 20px 40px;
   font-family: 'Roboto', sans-serif;
   color: #000;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 }
 
 /* PARTE IZQUIERDA */
 .footer .izquierda {
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   align-items: flex-start;
   gap: 10px;
 }
 
 .footer .izquierda img {
-  width: 100px; 
+  width: 100px;
   height: auto;
 }
 
@@ -339,7 +341,7 @@ button:hover {
 }
 
 .footer .derecha .redes {
-  display: flex; 
+  display: flex;
   flex-direction: column;
   gap: 10px;
 }
@@ -349,7 +351,7 @@ button:hover {
   align-items: center;
   gap: 5px;
   text-decoration: none;
-  color: #000; 
+  color: #000;
 }
 
 .footer .derecha .redes a span {
@@ -361,7 +363,7 @@ button:hover {
   height: 24px;
 }
 
-/* RESPONSIVE:  */
+/* RESPONSIVE FOOTER */
 @media (max-width: 768px) {
   .footer {
     flex-direction: column;
